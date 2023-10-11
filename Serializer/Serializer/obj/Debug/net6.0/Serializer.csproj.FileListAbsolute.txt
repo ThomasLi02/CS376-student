@@ -1,0 +1,12 @@
+/Users/thomasli/Desktop/CS376-student/Serializer/Serializer/bin/Debug/net6.0/Serializer.deps.json
+/Users/thomasli/Desktop/CS376-student/Serializer/Serializer/bin/Debug/net6.0/Serializer.dll
+/Users/thomasli/Desktop/CS376-student/Serializer/Serializer/bin/Debug/net6.0/ref/Serializer.dll
+/Users/thomasli/Desktop/CS376-student/Serializer/Serializer/bin/Debug/net6.0/Serializer.pdb
+/Users/thomasli/Desktop/CS376-student/Serializer/Serializer/obj/Debug/net6.0/Serializer.csproj.AssemblyReference.cache
+/Users/thomasli/Desktop/CS376-student/Serializer/Serializer/obj/Debug/net6.0/Serializer.GeneratedMSBuildEditorConfig.editorconfig
+/Users/thomasli/Desktop/CS376-student/Serializer/Serializer/obj/Debug/net6.0/Serializer.AssemblyInfoInputs.cache
+/Users/thomasli/Desktop/CS376-student/Serializer/Serializer/obj/Debug/net6.0/Serializer.AssemblyInfo.cs
+/Users/thomasli/Desktop/CS376-student/Serializer/Serializer/obj/Debug/net6.0/Serializer.csproj.CoreCompileInputs.cache
+/Users/thomasli/Desktop/CS376-student/Serializer/Serializer/obj/Debug/net6.0/Serializer.dll
+/Users/thomasli/Desktop/CS376-student/Serializer/Serializer/obj/Debug/net6.0/ref/Serializer.dll
+/Users/thomasli/Desktop/CS376-student/Serializer/Serializer/obj/Debug/net6.0/Serializer.pdb
