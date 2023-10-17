@@ -40,8 +40,8 @@ public class ScoreKeeper : MonoBehaviour
     {
         Singleton = this;
         scoreDisplay = GetComponent<TMP_Text>();
-        // Initialize the display
-        ScorePointsInternal(0);
+        Score = 0;
+        scoreDisplay.text = "Score: " + Score.ToString();
     }
 
     /// <summary>
@@ -51,5 +51,7 @@ public class ScoreKeeper : MonoBehaviour
     private void ScorePointsInternal(int delta)
     {
         // TODO
+        Score += delta;
+        scoreDisplay.text = "Score: " + Score.ToString();
     }
 }

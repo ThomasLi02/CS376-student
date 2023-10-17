@@ -58,6 +58,9 @@ public class Enemy : MonoBehaviour
     /// </summary>
     private Vector2 HeadingToPlayer => OffsetToPlayer.normalized;
 
+    private float nextFireTime;
+
+
     /// <summary>
     /// Initialize player and rigidBody fields
     /// </summary>
@@ -66,6 +69,8 @@ public class Enemy : MonoBehaviour
     {
         player = FindObjectOfType<Player>().transform;
         rigidBody = GetComponent<Rigidbody2D>();
+        nextFireTime = Time.time + CoolDownTime; 
+
     }
 
     /// <summary>
@@ -75,6 +80,11 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         // TODO
+        if (Time.time >= nextFireTime)
+        {
+            Fire(); 
+            nextFireTime = Time.time + CoolDownTime; 
+        }
     }
 
     /// <summary>
@@ -84,6 +94,13 @@ public class Enemy : MonoBehaviour
     private void Fire()
     {
         // TODO
+        GameObject newOrb = Instantiate(OrbPrefab, (Vector2) transform.position + (Vector2)HeadingToPlayer, Quaternion.identity);
+        Rigidbody2D rb = newOrb.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.mass = OrbMass;
+            rb.velocity = HeadingToPlayer * OrbVelocity; 
+        }
     }
 
     /// <summary>
@@ -92,10 +109,17 @@ public class Enemy : MonoBehaviour
     // ReSharper disable once UnusedMember.Local
     void FixedUpdate()
     {
-        var offsetToPlayer = OffsetToPlayer;
-        var distanceToPlayer = offsetToPlayer.magnitude;
-        var controlSign = distanceToPlayer > ApproachDistance ? 1 : -1; 
-        rigidBody.AddForce(controlSign * (EnginePower / distanceToPlayer) * offsetToPlayer);
+        var offset = OffsetToPlayer;
+        var distance = offset.magnitude;
+        if (distance > ApproachDistance)
+        {
+            rigidBody.AddForce((EnginePower / distance) * offset);
+        }
+        else
+        {
+            rigidBody.AddForce(-1*(EnginePower / distance) * offset);
+
+        }
     }
 
     /// <summary>

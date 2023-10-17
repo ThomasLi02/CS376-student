@@ -26,6 +26,13 @@ public class Player : MonoBehaviour
     /// </summary>
     public float OrbVelocity = 10;
 
+    private Rigidbody2D rb;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
     /// <summary>
     /// Handle moving and firing.
     /// Called by Uniity every 1/50th of a second, regardless of the graphics card's frame rate
@@ -44,6 +51,15 @@ public class Player : MonoBehaviour
     void MaybeFire()
     {
         // TODO
+        if (Input.GetButton("Fire"))
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                FireOrb();
+            }
+            
+        }
+
     }
 
     /// <summary>
@@ -54,6 +70,15 @@ public class Player : MonoBehaviour
     private void FireOrb()
     {
         // TODO
+        Vector2 spawnPosition = transform.position + transform.right; 
+
+        GameObject orb = Instantiate(OrbPrefab, spawnPosition, Quaternion.identity);
+
+        Rigidbody2D orbRb = orb.GetComponent<Rigidbody2D>();
+        if (orbRb != null) 
+        {
+            orbRb.velocity = OrbVelocity * transform.right; 
+        }
     }
 
     /// <summary>
@@ -65,6 +90,16 @@ public class Player : MonoBehaviour
     void Manoeuvre()
     {
         // TODO
+
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+        Vector2 dir = new Vector2(horizontal, vertical);
+        Vector2 thrust = dir * EnginePower;
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        rb.AddForce(thrust);
+        float rotation = Input.GetAxis("Rotate");
+        float rotationSpeed = rotation * RotateSpeed;
+        rb.angularVelocity = -rotationSpeed;
     }
 
     /// <summary>
